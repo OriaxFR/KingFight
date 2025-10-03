@@ -1,0 +1,9 @@
+Ce dossier contient les resultats des tournois Jump League.
+
+Les fichiers de resultats sont automatiquement generes a la fin de chaque tournoi
+au format: resultats_DD-MM-YYYY_HH-MM.txt
+
+Chaque fichier contient:
+- La date et l'heure du tournoi
+- Le nombre de participants
+- Le TOP 5 final avec les scores

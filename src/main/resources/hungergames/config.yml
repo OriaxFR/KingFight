@@ -1,0 +1,544 @@
+########################################
+#      CONFIGURATION HUNGER GAMES     #
+#     Battle Royale avec bordure      #
+########################################
+
+# ═══════════════════════════════════════════════════════════════════════════════════════════════════════════════════
+# PARAMÈTRES DE PARTIE
+# ═══════════════════════════════════════════════════════════════════════════════════════════════════════════════════
+partie:
+  # Nombre minimum de joueurs requis pour démarrer une partie
+  taille-file-attente: 16
+  
+  # Lancement automatique même si la file n'est pas complète
+  lancement-automatique-actif: true
+  
+  # Nombre minimum de joueurs requis pour le lancement automatique
+  # (doit être inférieur à taille-file-attente)
+  minimum-joueurs-lancement-auto: 12
+  
+  # Délai d'attente avant lancement automatique (en secondes)
+  # Si la file n'est pas complète après ce délai, lance avec le minimum de joueurs
+  delai-lancement-auto-secondes: 60
+  
+  # Durée maximale d'une partie en minutes
+  duree-max-minutes: 15
+  
+  # Durée de l'invincibilité au début de la partie (en secondes)
+  temps-invincibilite-secondes: 30
+  
+  # Délai avant que la bordure commence à se réduire (en minutes)
+  temps-avant-bordure-minutes: 3
+  
+  # Vitesse de réduction de la bordure (en blocs par seconde)
+  vitesse-bordure-blocs-par-seconde: 2
+  
+  # Dégâts infligés par seconde aux joueurs hors de la bordure
+  degats-bordure-par-seconde: 4
+  
+  # Rayon final de la zone une fois la bordure totalement rétrécie
+  rayon-final-bordure: 10
+
+# ═══════════════════════════════════════════════════════════════════════════════════════════════════════════════════
+# CONFIGURATION DES COFFRES DE LOOT
+# ═══════════════════════════════════════════════════════════════════════════════════════════════════════════════════
+coffres:
+  # Nombre d'objets placés dans chaque coffre au début de la partie
+  items-par-coffre: 4
+  
+  # Configuration du loot des coffres normaux
+  # Système hybride : quantité ET pourcentage de chance d'apparition
+  # Format: 
+  #   MATERIAU:
+  #     quantite: X     # Nombre d'items si l'item apparaît
+  #     chance: Y.Z     # Pourcentage de chance d'apparition (0-100)
+  #
+  # GUIDE DES POURCENTAGES:
+  # 0-5%   = Très rare (objets puissants)
+  # 5-15%  = Rare (objets utiles)
+  # 15-30% = Peu commun (objets standards)
+  # 30-50% = Commun (objets de base)
+  # 50%+   = Très commun (objets essentiels)
+
+  loot:
+    # ─────────────────────────────────────────────────────────────────────────────────────────────────────────────
+    # ARMES - Plus l'arme est puissante, plus elle doit être rare
+    # ─────────────────────────────────────────────────────────────────────────────────────────────────────────────
+    DIAMOND_SWORD:
+      quantite: 1
+      chance: 5.0           # Épée en diamant - Très rare
+    
+    GOLD_SWORD:
+      quantite: 1
+      chance: 12.0          # Épée en Titane - Rare
+      nom: "&eÉpée en Titane"
+      enchantements:
+        DAMAGE_ALL: 5
+        DURABILITY: 3
+    
+    IRON_SWORD:
+      quantite: 1
+      chance: 15.0          # Épée en Saphir - Rare
+      nom: "&1Épée en Saphir"
+      enchantements:
+        DAMAGE_ALL: 5
+        DURABILITY: 3
+    
+    STONE_SWORD:
+      quantite: 1
+      chance: 25.0          # Épée en pierre - Peu commune
+    
+    WOOD_SWORD:
+      quantite: 1
+      chance: 35.0          # Épée en Onyx - Commune
+      nom: "&4Épée en Onyx"
+      enchantements:
+        DAMAGE_ALL: 5
+        DURABILITY: 3
+    
+    BOW:
+      quantite: 1
+      chance: 20.0          # Arc - Peu commun
+    ARROW:
+      quantite: 24
+      chance: 30.0          # 24 flèches - Communes
+    
+    # ─────────────────────────────────────────────────────────────────────────────────────────────────────────────
+    # ARMURES DIAMANT - Très rares car très protectrices
+    # ─────────────────────────────────────────────────────────────────────────────────────────────────────────────
+    DIAMOND_HELMET:
+      quantite: 1
+      chance: 3.0           # Casque diamant
+    DIAMOND_CHESTPLATE:
+      quantite: 1
+      chance: 3.0           # Plastron diamant
+    DIAMOND_LEGGINGS:
+      quantite: 1
+      chance: 3.0           # Jambières diamant
+    DIAMOND_BOOTS:
+      quantite: 1
+      chance: 3.0           # Bottes diamant
+    
+    # ─────────────────────────────────────────────────────────────────────────────────────────────────────────────
+    # ARMURES OR (TITANE) - Rares avec enchantements puissants
+    # ─────────────────────────────────────────────────────────────────────────────────────────────────────────────
+    GOLD_HELMET:
+      quantite: 1
+      chance: 7.0           # Casque en Titane
+      nom: "&eCasque en Titane"
+      enchantements:
+        PROTECTION_ENVIRONMENTAL: 4
+        DURABILITY: 3
+    
+    GOLD_CHESTPLATE:
+      quantite: 1
+      chance: 7.0           # Plastron en Titane
+      nom: "&ePlastron en Titane"
+      enchantements:
+        PROTECTION_ENVIRONMENTAL: 4
+        DURABILITY: 3
+    
+    GOLD_LEGGINGS:
+      quantite: 1
+      chance: 7.0           # Jambières en Titane
+      nom: "&eJambières en Titane"
+      enchantements:
+        PROTECTION_ENVIRONMENTAL: 4
+        DURABILITY: 3
+    
+    GOLD_BOOTS:
+      quantite: 1
+      chance: 7.0           # Bottes en Titane
+      nom: "&eBottes en Titane"
+      enchantements:
+        PROTECTION_ENVIRONMENTAL: 4
+        DURABILITY: 3
+    
+    # ─────────────────────────────────────────────────────────────────────────────────────────────────────────────
+    # ARMURES FER (SAPHIR) - Rares mais plus accessibles que le diamant
+    # ─────────────────────────────────────────────────────────────────────────────────────────────────────────────
+    IRON_HELMET:
+      quantite: 1
+      chance: 10.0          # Casque en Saphir
+      nom: "&1Casque en Saphir"
+      enchantements:
+        PROTECTION_ENVIRONMENTAL: 4
+        DURABILITY: 3
+    
+    IRON_CHESTPLATE:
+      quantite: 1
+      chance: 10.0          # Plastron en Saphir
+      nom: "&1Plastron en Saphir"
+      enchantements:
+        PROTECTION_ENVIRONMENTAL: 4
+        DURABILITY: 3
+    
+    IRON_LEGGINGS:
+      quantite: 1
+      chance: 10.0          # Jambières en Saphir
+      nom: "&1Jambières en Saphir"
+      enchantements:
+        PROTECTION_ENVIRONMENTAL: 4
+        DURABILITY: 3
+    
+    IRON_BOOTS:
+      quantite: 1
+      chance: 10.0          # Bottes en Saphir
+      nom: "&1Bottes en Saphir"
+      enchantements:
+        PROTECTION_ENVIRONMENTAL: 4
+        DURABILITY: 3
+    
+    # ─────────────────────────────────────────────────────────────────────────────────────────────────────────────
+    # ARMURES MAILLE (ONYX) - Peu communes avec enchantements puissants
+    # ─────────────────────────────────────────────────────────────────────────────────────────────────────────────
+    CHAINMAIL_HELMET:
+      quantite: 1
+      chance: 15.0          # Casque en Onyx
+      nom: "&4Casque en Onyx"
+      enchantements:
+        PROTECTION_ENVIRONMENTAL: 4
+        DURABILITY: 3
+    
+    CHAINMAIL_CHESTPLATE:
+      quantite: 1
+      chance: 15.0          # Plastron en Onyx
+      nom: "&4Plastron en Onyx"
+      enchantements:
+        PROTECTION_ENVIRONMENTAL: 4
+        DURABILITY: 3
+    
+    CHAINMAIL_LEGGINGS:
+      quantite: 1
+      chance: 15.0          # Jambières en Onyx
+      nom: "&4Jambières en Onyx"
+      enchantements:
+        PROTECTION_ENVIRONMENTAL: 4
+        DURABILITY: 3
+    
+    CHAINMAIL_BOOTS:
+      quantite: 1
+      chance: 15.0          # Bottes en Onyx
+      nom: "&4Bottes en Onyx"
+      enchantements:
+        PROTECTION_ENVIRONMENTAL: 4
+        DURABILITY: 3
+    
+    # ─────────────────────────────────────────────────────────────────────────────────────────────────────────────
+    # NOURRITURE - Essentielle pour la survie, doit être accessible
+    # ─────────────────────────────────────────────────────────────────────────────────────────────────────────────
+    COOKED_BEEF:
+      quantite: 4
+      chance: 40.0          # 4 bœufs cuits - Commune
+    BREAD:
+      quantite: 3
+      chance: 35.0          # 3 pains - Commun
+    APPLE:
+      quantite: 2
+      chance: 30.0          # 2 pommes - Commune
+    GOLDEN_APPLE:
+      quantite: 1
+      chance: 8.0           # 1 pomme dorée - Rare
+    
+    # ─────────────────────────────────────────────────────────────────────────────────────────────────────────────
+    # OBJETS SPÉCIAUX - Rares car ils donnent des avantages tactiques importants
+    # ─────────────────────────────────────────────────────────────────────────────────────────────────────────────
+    # Note: Les potions utilisent des valeurs de durabilité pour définir leurs effets en Minecraft 1.8.8
+    POTION:
+      configurations:
+        soin:
+          quantite: 1
+          chance: 20.0      # Potions de soin - Peu communes
+          types:
+            - 8197          # Soin I
+            - 8229          # Soin II
+        force:
+          quantite: 1
+          chance: 8.0       # Potions de force - Rares
+          types:
+            - 8201          # Force I
+            - 8233          # Force II
+        vitesse:
+          quantite: 1
+          chance: 12.0      # Potions de vitesse - Rares
+          types:
+            - 8194          # Vitesse I
+            - 8226          # Vitesse II
+        regeneration:
+          quantite: 1
+          chance: 6.0       # Potions de régénération - Très rares
+          types:
+            - 8193          # Régénération I
+            - 8225          # Régénération II
+    
+    ENDER_PEARL:
+      quantite: 1
+      chance: 12.0          # 1 perle de l'Ender - Rare
+    FLINT_AND_STEEL:
+      quantite: 1
+      chance: 10.0          # 1 briquet - Rare
+    TNT:
+      quantite: 2
+      chance: 8.0           # 2 TNT - Très rare
+
+# ═══════════════════════════════════════════════════════════════════════════════════════════════════════════════════
+# TYPES DE POTIONS DISPONIBLES
+# ═══════════════════════════════════════════════════════════════════════════════════════════════════════════════════
+# Pour configurer les potions, ajoutez "types:" sous POTION avec une liste d'IDs
+# Si "types:" n'est pas spécifié, toutes les potions seront disponibles aléatoirement
+#
+# IDs des potions courantes:
+# 8193 = Régénération I (0:45)          8225 = Régénération II (0:22)
+# 8194 = Vitesse I (3:00)               8226 = Vitesse II (1:30)
+# 8195 = Résistance au feu (3:00)      8227 = Résistance au feu (8:00)
+# 8196 = Poison I (0:45)                8228 = Poison II (0:22)
+# 8197 = Soin instantané I              8229 = Soin instantané II
+# 8201 = Force I (3:00)                 8233 = Force II (1:30)
+# 8202 = Lenteur I (1:30)               8234 = Lenteur II (0:20)
+# 8204 = Saut amélioré I (3:00)        8236 = Saut amélioré II (1:30)
+# 8206 = Dégâts instantanés I           8238 = Dégâts instantanés II
+# 8262 = Invisibilité (3:00)            8270 = Invisibilité (8:00)
+#
+# Exemple pour plusieurs types de potions utiles:
+#   POTION:
+#     quantite: 1
+#     chance: 15.0
+#     types:
+#       - 8197
+#       - 8229
+#       - 8194
+#       - 8226
+#       - 8195
+#       - 8201
+
+
+# ═══════════════════════════════════════════════════════════════════════════════════════════════════════════════════
+# COLIS STRATÉGIQUES (AIRDROPS)
+# ═══════════════════════════════════════════════════════════════════════════════════════════════════════════════════
+colis:
+  # Intervalle entre chaque largage de colis stratégique (en minutes)
+  intervalle-minutes: 1
+  
+  # Rayon maximum autour du centre de la map où les colis peuvent apparaître
+  # Plus le rayon est grand, plus les colis peuvent être dispersés
+  rayon-spawn-colis: 100
+  
+  # Configuration du loot des colis spéciaux
+  # Système hybride : quantité ET pourcentage de chance d'apparition
+  # Format: 
+  #   MATERIAU:
+  #     quantite: X     # Nombre d'items si l'item apparaît
+  #     chance: Y.Z     # Pourcentage de chance d'apparition (0-100)
+  #
+  # GUIDE DES POURCENTAGES:
+  # 0-20%   = Très rare (objets ultra-puissants)
+  # 20-40%  = Rare (objets puissants)
+  # 40-70%  = Peu commun (objets utiles)
+  # 70-90%  = Commun (objets standards)
+  # 90-100% = Très commun (objets garantis)
+  loot:
+    # ─────────────────────────────────────────────────────────────────────────────────────────────────────────────
+    # ARMES PREMIUM - Équipement de haute qualité
+    # ─────────────────────────────────────────────────────────────────────────────────────────────────────────────
+    DIAMOND_SWORD:
+      quantite: 1
+      chance: 85.0          # 85% de chance d'avoir une épée diamant
+    
+    GOLD_SWORD:
+      quantite: 1
+      chance: 50.0          # 50% de chance d'avoir une épée en Titane
+      nom: "&eÉpée en Titane"
+      enchantements:
+        DAMAGE_ALL: 5
+        DURABILITY: 3
+    
+    IRON_SWORD:
+      quantite: 1
+      chance: 60.0          # 60% de chance d'avoir une épée en Saphir
+      nom: "&1Épée en Saphir"
+      enchantements:
+        DAMAGE_ALL: 5
+        DURABILITY: 3
+    
+    BOW:
+      quantite: 1
+      chance: 90.0          # 90% de chance d'avoir un arc
+    ARROW:
+      quantite: 32
+      chance: 95.0          # 95% de chance d'avoir des flèches
+    
+    # ─────────────────────────────────────────────────────────────────────────────────────────────────────────────
+    # ARMURES PREMIUM - Protection maximale
+    # ─────────────────────────────────────────────────────────────────────────────────────────────────────────────
+    DIAMOND_HELMET:
+      quantite: 1
+      chance: 70.0          # 70% de chance d'avoir un casque diamant
+    DIAMOND_CHESTPLATE:
+      quantite: 1
+      chance: 75.0          # 75% de chance d'avoir un plastron diamant
+    DIAMOND_LEGGINGS:
+      quantite: 1
+      chance: 0.0           # Désactivé (0% de chance)
+    DIAMOND_BOOTS:
+      quantite: 1
+      chance: 0.0           # Désactivé (0% de chance)
+    
+    # ─────────────────────────────────────────────────────────────────────────────────────────────────────────────
+    # ARMURES OR (TITANE) - Premium avec enchantements
+    # ─────────────────────────────────────────────────────────────────────────────────────────────────────────────
+    GOLD_HELMET:
+      quantite: 1
+      chance: 40.0          # 40% de chance d'avoir un casque en Titane
+      nom: "&eCasque en Titane"
+      enchantements:
+        PROTECTION_ENVIRONMENTAL: 4
+        DURABILITY: 3
+    
+    GOLD_CHESTPLATE:
+      quantite: 1
+      chance: 45.0          # 45% de chance d'avoir un plastron en Titane
+      nom: "&ePlastron en Titane"
+      enchantements:
+        PROTECTION_ENVIRONMENTAL: 4
+        DURABILITY: 3
+    
+    GOLD_LEGGINGS:
+      quantite: 1
+      chance: 40.0          # 40% de chance d'avoir des jambières en Titane
+      nom: "&eJambières en Titane"
+      enchantements:
+        PROTECTION_ENVIRONMENTAL: 4
+        DURABILITY: 3
+    
+    GOLD_BOOTS:
+      quantite: 1
+      chance: 35.0          # 35% de chance d'avoir des bottes en Titane
+      nom: "&eBottes en Titane"
+      enchantements:
+        PROTECTION_ENVIRONMENTAL: 4
+        DURABILITY: 3
+    
+    # ─────────────────────────────────────────────────────────────────────────────────────────────────────────────
+    # ARMURES FER (SAPHIR) - Premium avec enchantements
+    # ─────────────────────────────────────────────────────────────────────────────────────────────────────────────
+    IRON_HELMET:
+      quantite: 1
+      chance: 50.0          # 50% de chance d'avoir un casque en Saphir
+      nom: "&1Casque en Saphir"
+      enchantements:
+        PROTECTION_ENVIRONMENTAL: 4
+        DURABILITY: 3
+    
+    IRON_CHESTPLATE:
+      quantite: 1
+      chance: 55.0          # 55% de chance d'avoir un plastron en Saphir
+      nom: "&1Plastron en Saphir"
+      enchantements:
+        PROTECTION_ENVIRONMENTAL: 4
+        DURABILITY: 3
+    
+    IRON_LEGGINGS:
+      quantite: 1
+      chance: 50.0          # 50% de chance d'avoir des jambières en Saphir
+      nom: "&1Jambières en Saphir"
+      enchantements:
+        PROTECTION_ENVIRONMENTAL: 4
+        DURABILITY: 3
+    
+    IRON_BOOTS:
+      quantite: 1
+      chance: 45.0          # 45% de chance d'avoir des bottes en Saphir
+      nom: "&1Bottes en Saphir"
+      enchantements:
+        PROTECTION_ENVIRONMENTAL: 4
+        DURABILITY: 3
+    
+    # ─────────────────────────────────────────────────────────────────────────────────────────────────────────────
+    # OBJETS SPÉCIAUX - Avantages tactiques uniques
+    # ─────────────────────────────────────────────────────────────────────────────────────────────────────────────
+    GOLDEN_APPLE:
+      quantite: 3
+      chance: 100.0         # Toujours 3 pommes dorées (garanti)
+    ENDER_PEARL:
+      quantite: 2
+      chance: 60.0          # 60% de chance d'avoir 2 perles de l'Ender
+    
+    POTION:
+      configurations:
+        soin:
+          quantite: 2
+          chance: 85.0      # Potions de soin - Très communes dans les colis
+          types:
+            - 8197          # Soin I
+            - 8229          # Soin II
+        force:
+          quantite: 2
+          chance: 60.0      # Potions de force - Communes dans les colis
+          types:
+            - 8201          # Force I
+            - 8233          # Force II
+        vitesse:
+          quantite: 2
+          chance: 70.0      # Potions de vitesse - Communes dans les colis
+          types:
+            - 8194          # Vitesse I
+            - 8226          # Vitesse II
+        regeneration:
+          quantite: 1
+          chance: 50.0      # Potions de régénération - Peu communes dans les colis
+          types:
+            - 8193          # Régénération I
+            - 8225          # Régénération II
+        resistance_feu:
+          quantite: 1
+          chance: 40.0      # Potions de résistance au feu - Peu communes
+          types:
+            - 8195          # Résistance au feu I (3:00)
+            - 8227          # Résistance au feu I (8:00)
+
+# ═══════════════════════════════════════════════════════════════════════════════════════════════════════════════════
+# TYPES DE POTIONS DISPONIBLES
+# ═══════════════════════════════════════════════════════════════════════════════════════════════════════════════════
+# Pour configurer les potions, ajoutez "types:" sous POTION avec une liste d'IDs
+# Si "types:" n'est pas spécifié, toutes les potions seront disponibles aléatoirement
+#
+# IDs des potions courantes:
+# 8193 = Régénération I (0:45)          8225 = Régénération II (0:22)
+# 8194 = Vitesse I (3:00)               8226 = Vitesse II (1:30)
+# 8195 = Résistance au feu (3:00)      8227 = Résistance au feu (8:00)
+# 8196 = Poison I (0:45)                8228 = Poison II (0:22)
+# 8197 = Soin instantané I              8229 = Soin instantané II
+# 8201 = Force I (3:00)                 8233 = Force II (1:30)
+# 8202 = Lenteur I (1:30)               8234 = Lenteur II (0:20)
+# 8204 = Saut amélioré I (3:00)        8236 = Saut amélioré II (1:30)
+# 8206 = Dégâts instantanés I           8238 = Dégâts instantanés II
+# 8262 = Invisibilité (3:00)            8270 = Invisibilité (8:00)
+#
+# Exemple pour plusieurs types de potions utiles:
+#   POTION:
+#     quantite: 1
+#     chance: 15.0
+#     types:
+#       - 8197
+#       - 8229
+#       - 8194
+#       - 8226
+#       - 8195
+#       - 8201
+
+# ═══════════════════════════════════════════════════════════════════════════════════════════════════════════════════
+# SYSTÈME DE POINTS ET CLASSEMENTS
+# ═══════════════════════════════════════════════════════════════════════════════════════════════════════════════════
+# Points attribués selon les performances des joueurs
+points:
+  # Points par élimination d'un autre joueur
+  kill: 1
+  
+  # Points selon le classement final dans la partie
+  # Plus le joueur finit haut dans le classement, plus il gagne de points
+  top-12: 1    # 12ème place ou mieux (top 75% avec 16 joueurs)
+  top-8: 1     # 8ème place ou mieux (top 50% avec 16 joueurs)
+  top-5: 2     # 5ème place ou mieux (top 31% avec 16 joueurs)
+  top-3: 3     # 3ème place ou mieux (podium)
+  top-2: 3     # 2ème place (finaliste)
+  top-1: 5     # 1ère place (victoire) - Le plus gros bonus

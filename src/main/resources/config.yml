@@ -1,0 +1,163 @@
+########################################
+#          CONFIGURATION KINGFIGHT    #
+#     Plugin de tournois multi-jeux   #
+########################################
+
+# ═══════════════════════════════════════════════════════════════════════════════════════════════════════════════════
+# CONFIGURATION GÉNÉRALE
+# ═══════════════════════════════════════════════════════════════════════════════════════════════════════════════════
+general:
+  # Nom du monde où se trouve le lobby principal
+  # Ce monde doit exister sur votre serveur
+  # Exemple: "world", "lobby", "hub"
+  lobby-world: "world"
+  
+  # Position exacte du spawn dans le lobby
+  # Les joueurs seront téléportés à ces coordonnées quand ils quittent une partie
+  # Format: x, y, z (coordonnées décimales acceptées)
+  lobby-spawn:
+    x: 0      # Coordonnée X du spawn
+    y: 100    # Coordonnée Y du spawn (hauteur)
+    z: 0      # Coordonnée Z du spawn
+  
+  # Limite du nombre de parties qu'un joueur peut jouer par événement
+  max-parties-par-joueur: 10
+
+# ═══════════════════════════════════════════════════════════════════════════════════════════════════════════════════
+# GESTION DES MAPS ET MONDES
+# ═══════════════════════════════════════════════════════════════════════════════════════════════════════════════════
+maps:
+  # Active la création automatique de copies temporaires des maps
+  # IMPORTANT: Désactiver cette option peut causer des conflits si plusieurs parties utilisent la même map
+  # Recommandé: true (sauf si vous gérez manuellement les maps)
+  duplication-activee: true
+  
+  # Nom du dossier où seront stockées les maps temporaires
+  # Ce dossier sera créé automatiquement dans le répertoire des mondes du serveur
+  # Évitez les caractères spéciaux et espaces
+  dossier-temporaire: "temp_maps"
+  
+  # Supprime automatiquement les maps temporaires au démarrage du serveur
+  # Recommandé: true pour éviter l'accumulation de fichiers inutiles
+  nettoyer-au-demarrage: true
+  
+  # Délai en minutes avant la suppression automatique des maps temporaires après une partie
+  # Plus le délai est long, plus l'espace disque utilisé sera important
+  # Valeur recommandée: 5-10 minutes
+  delai-nettoyage: 5
+
+# ═══════════════════════════════════════════════════════════════════════════════════════════════════════════════════
+# ÉVÉNEMENTS AUTOMATIQUES
+# ═══════════════════════════════════════════════════════════════════════════════════════════════════════════════════
+evenements:
+  # Active le système d'événements programmés automatiquement
+  # Si désactivé, seuls les événements manuels seront possibles
+  automatiques: true
+  
+  # Planning hebdomadaire des événements
+  # ATTENTION: Les noms des jours doivent être écrits EXACTEMENT comme suit:
+  # lundi, mardi, mercredi, jeudi, vendredi, samedi, dimanche
+  # 
+  # Types d'événements disponibles:
+  # - "hungergames" : Battle royale classique avec coffres et bordure
+  # - "jumpleague" : Parcours de saut + phase PvP
+  # - "getdown" : Descente rapide + phase stuff + PvP
+  horaires:
+    mercredi:
+      debut: "19:00"
+      fin: "21:00"
+      type: "hungergames"
+    vendredi:
+      debut: "19:00"
+      fin: "21:00"
+      type: "jumpleague"
+    dimanche:
+      debut: "19:00"
+      fin: "21:00"
+      type: "getdown"
+
+# ═══════════════════════════════════════════════════════════════════════════════════════════════════════════════════
+# SYSTÈME D'ANNONCES
+# ═══════════════════════════════════════════════════════════════════════════════════════════════════════════════════
+annonces:
+  # Active les annonces automatiques dans le chat
+  # Les annonces informent les joueurs des événements à venir et en cours
+  activees: true
+  
+  # Moments où les annonces sont envoyées AVANT le début d'un événement
+  # Valeurs en minutes avant l'heure de début
+  # Exemple: [30, 15, 5] = annonces à 30min, 15min et 5min avant l'événement
+  avant-evenement: [30, 15, 5]
+  
+  # Moments où les annonces de rappel sont envoyées PENDANT un événement
+  # Valeurs en minutes après le début de l'événement
+  # Utile pour rappeler aux joueurs qu'un événement est en cours
+  pendant-evenement: [30, 15, 5]
+
+# ═══════════════════════════════════════════════════════════════════════════════════════════════════════════════════
+# SYSTÈME DE CLASSEMENTS
+# ═══════════════════════════════════════════════════════════════════════════════════════════════════════════════════
+classements:
+  # Remet à zéro tous les classements chaque semaine
+  # Permet de relancer la compétition régulièrement
+  reinitialiser-hebdomadaire: false
+  
+  # Jour de la semaine où la réinitialisation a lieu (si activée)
+  # 1 = Lundi, 2 = Mardi, 3 = Mercredi, 4 = Jeudi, 5 = Vendredi, 6 = Samedi, 7 = Dimanche
+  jour-reinitialisation: 1
+  
+  # Nombre de joueurs affichés dans les classements (commande /top)
+  # Plus ce nombre est élevé, plus l'affichage sera long
+  taille-top: 10
+
+# ═══════════════════════════════════════════════════════════════════════════════════════════════════════════════════
+# MENU PRINCIPAL - AFFICHAGE DU TOP EN TEMPS RÉEL
+# ═══════════════════════════════════════════════════════════════════════════════════════════════════════════════════
+menu:
+  # Active l'affichage du top des joueurs dans le menu lors des événements
+  # Quand un événement est actif, le top des joueurs sera affiché en survolant l'item de l'événement
+  afficher-top-evenement: true
+  
+  # Nombre de joueurs à afficher dans le top (1-20)
+  taille-top-evenement: 10
+  
+  # Configuration des cash prizes pour chaque position
+  # Si aucune valeur n'est définie pour une position, rien ne sera affiché
+  # Format: "montant€" ou toute autre devise/récompense
+  cash-prizes:
+    top1: "50€"
+    top2: "30€"
+    top3: "20€"
+    top4: "10€"
+    top5: "5€"
+  
+# ═══════════════════════════════════════════════════════════════════════════════════════════════════════════════════
+# MESSAGES PERSONNALISÉS
+# ═══════════════════════════════════════════════════════════════════════════════════════════════════════════════════
+# Variables disponibles: {current} = nombre actuel, {max} = nombre maximum, {player} = nom du joueur
+messages:
+  # Préfixe affiché devant tous les messages du plugin
+  prefix: "§6[KingFight] §r"
+  
+  # Message affiché quand un joueur rejoint une file d'attente
+  # {current} = nombre de joueurs actuellement en attente
+  # {max} = nombre de joueurs requis pour lancer la partie
+  file-attente-rejointe: "§aVous avez rejoint la file d'attente ! §7({current}/{max})"
+  
+  # Message affiché quand un joueur quitte une file d'attente
+  file-attente-quittee: "§eVous avez quitté la file d'attente."
+  
+  # Message affiché au début d'une partie
+  partie-demarree: "§aLa partie commence ! Bonne chance !"
+  
+  # Message affiché à la fin d'une partie
+  partie-terminee: "§cLa partie est terminée !"
+  
+  # Message affiché quand un joueur a atteint sa limite de parties
+  plus-de-parties: "§cVous avez atteint le nombre maximum de parties pour cet événement !"
+  
+  # Message affiché quand un joueur essaie de rejoindre un événement inactif
+  evenement-inactif: "§cCet événement n'est pas actif actuellement !"
+  
+  # Message affiché quand un joueur essaie de rejoindre une partie alors qu'il est déjà dans une autre
+  deja-en-partie: "§cVous êtes déjà dans une partie !"

@@ -1,0 +1,33 @@
+# Configuration des maps pour KingFight
+# Gestion centralisée des mondes et de la duplication
+
+# Configuration du lobby
+lobby:
+  # Monde du lobby principal
+  monde: "world"
+  # Position de spawn du lobby
+  spawn:
+    x: 0.0
+    y: 100.0
+    z: 0.0
+
+# Maps disponibles pour Hunger Games
+hungergames:
+  maps: []
+
+# Maps disponibles pour Jump League
+jumpleague:
+  maps: []
+
+# Maps disponibles pour GetDown
+getdown:
+  maps: []
+
+# Configuration de la duplication des maps
+duplication:
+  # Dossier pour les maps temporaires
+  dossier-temporaire: "temp_maps"
+  # Nettoyer les maps temporaires au démarrage du serveur
+  nettoyer-au-demarrage: true
+  # Délai avant suppression automatique des maps temporaires (en minutes)
+  delai-nettoyage-minutes: 5

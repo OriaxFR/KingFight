@@ -1,0 +1,37 @@
+name: KingFight
+version: 1.0
+main: fr.oriax.kingfight.KingFight
+api-version: 1.8
+author: Oriax
+description: Plugin de tournois avec trois mini-jeux - Hunger Games, Jump League et GetDown
+
+commands:
+  kingfight:
+    description: Commande principale du plugin
+    usage: /kingfight
+    aliases: [kf]
+  forcer:
+    description: Force le lancement d'un evenement
+    usage: /forcer <hungergames|jumpleague|getdown>
+    permission: kingfight.admin
+  tournoi:
+    description: Ouvre le menu des mini-jeux
+    usage: /tournoi
+  lobby:
+    description: Retourne au lobby
+    usage: /lobby
+  setup:
+    description: Configuration des maps
+    usage: /setup <type> <action>
+    permission: kingfight.setup
+
+permissions:
+  kingfight.admin:
+    description: Permissions administrateur
+    default: op
+  kingfight.setup:
+    description: Permissions setup des maps
+    default: op
+  kingfight.player:
+    description: Permissions joueur
+    default: true

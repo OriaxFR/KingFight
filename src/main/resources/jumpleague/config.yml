@@ -1,0 +1,296 @@
+########################################
+#      CONFIGURATION JUMP LEAGUE      #
+#    Parcours de saut + Phase PvP     #
+########################################
+
+# ═══════════════════════════════════════════════════════════════════════════════════════════════════════════════════
+# PARAMÈTRES DE PARTIE
+# ═══════════════════════════════════════════════════════════════════════════════════════════════════════════════════
+partie:
+  # Nombre minimum de joueurs requis pour démarrer une partie
+  # Jump League peut fonctionner avec moins de joueurs que les autres modes
+  taille-file-attente: 16
+  
+  # Lancement automatique même si la file n'est pas complète
+  lancement-automatique-actif: true
+  
+  # Nombre minimum de joueurs requis pour le lancement automatique
+  # (doit être inférieur à taille-file-attente)
+  minimum-joueurs-lancement-auto: 12
+  
+  # Délai d'attente avant lancement automatique (en secondes)
+  # Si la file n'est pas complète après ce délai, lance avec le minimum de joueurs
+  delai-lancement-auto-secondes: 60
+  
+  # Durée de la phase de parcours de saut (en minutes)
+  duree-phase-jump-minutes: 8
+  
+  # Durée de la phase PvP finale (en minutes)
+  duree-phase-pvp-minutes: 7
+  
+  # Nombre de vies par joueur pendant la phase PvP
+  vies-pvp: 3
+  
+  # Délai avant que la bordure commence à se réduire en phase PvP (en minutes)
+  temps-avant-bordure-minutes: 1
+  
+  # Vitesse de réduction de la bordure (en blocs par seconde)
+  vitesse-bordure-blocs-par-seconde: 2
+  
+  # Dégâts infligés par seconde aux joueurs hors de la bordure
+  degats-bordure-par-seconde: 4
+  
+  # Durée de l'effet de régénération après avoir éliminé un joueur (en secondes)
+  duree-regeneration-kill-secondes: 10
+
+# ═══════════════════════════════════════════════════════════════════════════════════════════════════════════════════
+# CONFIGURATION DES COFFRES DE LOOT
+# ═══════════════════════════════════════════════════════════════════════════════════════════════════════════════════
+coffres:
+  # Nombre d'objets placés dans chaque coffre de l'arène PvP
+  items-par-coffre: 4
+  
+  # Pourcentage de chance d'apparition de chaque objet dans les coffres
+  # Ces coffres sont généralement plus généreux que ceux d'Hunger Games
+  # car la phase PvP est plus courte et intense
+  # 
+  # GUIDE DES POURCENTAGES:
+  # 0-10%  = Très rare (objets exceptionnels)
+  # 10-20% = Rare (objets puissants)
+  # 20-35% = Peu commun (objets utiles)
+  # 35-50% = Commun (objets standards)
+  # 50%+   = Très commun (objets de base)
+  chances:
+    # ─────────────────────────────────────────────────────────────────────────────────────────────────────────────
+    # ARMES - Équilibrage pour des combats rapides et intenses
+    # ─────────────────────────────────────────────────────────────────────────────────────────────────────────────
+    DIAMOND_SWORD: 8.0     # Épée diamant - Rare
+    
+    GOLD_SWORD:
+      chance: 18.0         # Épée en Titane - Peu commune
+      nom: "&eÉpée en Titane"
+      enchantements:
+        DAMAGE_ALL: 5
+        DURABILITY: 3
+    
+    IRON_SWORD:
+      chance: 20.0         # Épée en Saphir - Peu commune
+      nom: "&1Épée en Saphir"
+      enchantements:
+        DAMAGE_ALL: 5
+        DURABILITY: 3
+    
+    STONE_SWORD: 30.0      # Épée pierre - Commune
+    
+    WOOD_SWORD:
+      chance: 35.0         # Épée en Onyx - Commune
+      nom: "&4Épée en Onyx"
+      enchantements:
+        DAMAGE_ALL: 5
+        DURABILITY: 3
+    
+    BOW: 25.0              # Arc - Peu commun
+    ARROW: 40.0            # Flèches - Communes
+    
+    # ─────────────────────────────────────────────────────────────────────────────────────────────────────────────
+    # ARMURES OR (TITANE) - Protection puissante avec enchantements
+    # ─────────────────────────────────────────────────────────────────────────────────────────────────────────────
+    GOLD_HELMET:
+      chance: 12.0         # Casque en Titane - Rare
+      nom: "&eCasque en Titane"
+      enchantements:
+        PROTECTION_ENVIRONMENTAL: 4
+        DURABILITY: 3
+    
+    GOLD_CHESTPLATE:
+      chance: 12.0         # Plastron en Titane - Rare
+      nom: "&ePlastron en Titane"
+      enchantements:
+        PROTECTION_ENVIRONMENTAL: 4
+        DURABILITY: 3
+    
+    GOLD_LEGGINGS:
+      chance: 12.0         # Jambières en Titane - Rares
+      nom: "&eJambières en Titane"
+      enchantements:
+        PROTECTION_ENVIRONMENTAL: 4
+        DURABILITY: 3
+    
+    GOLD_BOOTS:
+      chance: 12.0         # Bottes en Titane - Rares
+      nom: "&eBottes en Titane"
+      enchantements:
+        PROTECTION_ENVIRONMENTAL: 4
+        DURABILITY: 3
+    
+    # ─────────────────────────────────────────────────────────────────────────────────────────────────────────────
+    # ARMURES FER (SAPHIR) - Protection principale avec enchantements
+    # ─────────────────────────────────────────────────────────────────────────────────────────────────────────────
+    IRON_HELMET:
+      chance: 15.0         # Casque en Saphir - Peu commun
+      nom: "&1Casque en Saphir"
+      enchantements:
+        PROTECTION_ENVIRONMENTAL: 4
+        DURABILITY: 3
+    
+    IRON_CHESTPLATE:
+      chance: 15.0         # Plastron en Saphir - Peu commun
+      nom: "&1Plastron en Saphir"
+      enchantements:
+        PROTECTION_ENVIRONMENTAL: 4
+        DURABILITY: 3
+    
+    IRON_LEGGINGS:
+      chance: 15.0         # Jambières en Saphir - Peu communes
+      nom: "&1Jambières en Saphir"
+      enchantements:
+        PROTECTION_ENVIRONMENTAL: 4
+        DURABILITY: 3
+    
+    IRON_BOOTS:
+      chance: 15.0         # Bottes en Saphir - Peu communes
+      nom: "&1Bottes en Saphir"
+      enchantements:
+        PROTECTION_ENVIRONMENTAL: 4
+        DURABILITY: 3
+    
+    # ─────────────────────────────────────────────────────────────────────────────────────────────────────────────
+    # ARMURES MAILLE (ONYX) - Protection intermédiaire avec enchantements
+    # ─────────────────────────────────────────────────────────────────────────────────────────────────────────────
+    CHAINMAIL_HELMET:
+      chance: 20.0         # Casque en Onyx - Peu commun
+      nom: "&4Casque en Onyx"
+      enchantements:
+        PROTECTION_ENVIRONMENTAL: 4
+        DURABILITY: 3
+    
+    CHAINMAIL_CHESTPLATE:
+      chance: 20.0         # Plastron en Onyx - Peu commun
+      nom: "&4Plastron en Onyx"
+      enchantements:
+        PROTECTION_ENVIRONMENTAL: 4
+        DURABILITY: 3
+    
+    CHAINMAIL_LEGGINGS:
+      chance: 20.0         # Jambières en Onyx - Peu communes
+      nom: "&4Jambières en Onyx"
+      enchantements:
+        PROTECTION_ENVIRONMENTAL: 4
+        DURABILITY: 3
+    
+    CHAINMAIL_BOOTS:
+      chance: 20.0         # Bottes en Onyx - Peu communes
+      nom: "&4Bottes en Onyx"
+      enchantements:
+        PROTECTION_ENVIRONMENTAL: 4
+        DURABILITY: 3
+    
+    # ─────────────────────────────────────────────────────────────────────────────────────────────────────────────
+    # ARMURES CUIR - Protection de base, très accessible
+    # ─────────────────────────────────────────────────────────────────────────────────────────────────────────────
+    LEATHER_HELMET: 25.0      # Casque cuir - Commun
+    LEATHER_CHESTPLATE: 25.0  # Plastron cuir - Commun
+    LEATHER_LEGGINGS: 25.0    # Jambières cuir - Communes
+    LEATHER_BOOTS: 25.0       # Bottes cuir - Communes
+    
+    # ─────────────────────────────────────────────────────────────────────────────────────────────────────────────
+    # NOURRITURE - Importante pour maintenir la santé pendant les combats
+    # ─────────────────────────────────────────────────────────────────────────────────────────────────────────────
+    COOKED_BEEF: 35.0    # Bœuf cuit - Commun
+    BREAD: 30.0          # Pain - Commun
+    APPLE: 25.0          # Pomme - Commune
+    GOLDEN_APPLE: 10.0   # Pomme dorée - Rare
+    
+    # ─────────────────────────────────────────────────────────────────────────────────────────────────────────────
+    # OBJETS SPÉCIAUX - Utiles pour les stratégies avancées
+    # ─────────────────────────────────────────────────────────────────────────────────────────────────────────────
+    # Note: Les potions utilisent des valeurs de durabilité pour définir leurs effets en Minecraft 1.8.8
+    POTION:
+      configurations:
+        soin:
+          quantite: 1
+          chance: 25.0
+          types:
+            - 8197 #Soin instantané I
+            - 8229 #Soin instantané II
+        force:
+          quantite: 1
+          chance: 15.0
+          types:
+            - 8201 #Force I (3:00)
+            - 8233 #Force II (1:30)
+        vitesse:
+          quantite: 1
+          chance: 20.0
+          types:
+            - 8194 #Vitesse I (3:00)
+            - 8226 #Vitesse II (1:30)
+        regeneration:
+          quantite: 1
+          chance: 12.0
+          types:
+            - 8193 #Régénération I (0:45)
+            - 8225 #Régénération II (0:22)
+
+# ═══════════════════════════════════════════════════════════════════════════════════════════════════════════════════
+# TYPES DE POTIONS DISPONIBLES
+# ═══════════════════════════════════════════════════════════════════════════════════════════════════════════════════
+# Pour configurer les potions, ajoutez "types:" sous POTION avec une liste d'IDs
+# Si "types:" n'est pas spécifié, toutes les potions seront disponibles aléatoirement
+#
+# IDs des potions courantes:
+# 8193 = Régénération I (0:45)          8225 = Régénération II (0:22)
+# 8194 = Vitesse I (3:00)               8226 = Vitesse II (1:30)
+# 8195 = Résistance au feu (3:00)      8227 = Résistance au feu (8:00)
+# 8196 = Poison I (0:45)                8228 = Poison II (0:22)
+# 8197 = Soin instantané I              8229 = Soin instantané II
+# 8201 = Force I (3:00)                 8233 = Force II (1:30)
+# 8202 = Lenteur I (1:30)               8234 = Lenteur II (0:20)
+# 8204 = Saut amélioré I (3:00)        8236 = Saut amélioré II (1:30)
+# 8206 = Dégâts instantanés I           8238 = Dégâts instantanés II
+# 8262 = Invisibilité (3:00)            8270 = Invisibilité (8:00)
+#
+# Exemple pour plusieurs types de potions utiles:
+#   POTION:
+#     quantite: 1
+#     chance: 15.0
+#     types:
+#       - 8197
+#       - 8229
+#       - 8194
+#       - 8226
+#       - 8195
+#       - 8201
+
+# ═══════════════════════════════════════════════════════════════════════════════════════════════════════════════════
+# SYSTÈME DE POINTS ET CLASSEMENTS
+# ═══════════════════════════════════════════════════════════════════════════════════════════════════════════════════
+points:
+  # Points attribués pour chaque section de parcours complétée avec succès
+  parcours-reussi: 2
+  
+  # Bonus spécial pour le premier joueur qui termine complètement tous les parcours
+  premier-termine: 10
+  
+  # Points par élimination d'un adversaire en phase PvP
+  kill: 1
+  
+  # Points selon le classement final (combinaison parcours + PvP)
+  # Le classement final prend en compte les performances dans les deux phases
+  top-12: 1    # 12ème place ou mieux
+  top-8: 1     # 8ème place ou mieux  
+  top-5: 2     # 5ème place ou mieux
+  top-3: 3     # Podium (top 3)
+  top-2: 3     # Finaliste (2ème place)
+  top-1: 5     # Champion (1ère place)
+
+# ═══════════════════════════════════════════════════════════════════════════════════════════════════════════════════
+# EFFETS SPÉCIAUX
+# ═══════════════════════════════════════════════════════════════════════════════════════════════════════════════════
+# Configuration des effets de potion automatiques donnés dans certaines situations
+effets:
+  # Niveau de l'effet de régénération donné après une élimination
+  regeneration-niveau: 2
+  
+  # Durée de l'effet de régénération après une élimination (en secondes)
+  regeneration-duree-secondes: 10

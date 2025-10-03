@@ -1,0 +1,72 @@
+########################################
+#      CONFIGURATION DES BACKUPS      #
+#   Gestion automatique des sauvegardes #
+########################################
+
+# ═══════════════════════════════════════════════════════════════════════════════════════════════════════════════════
+# PARAMÈTRES GÉNÉRAUX
+# ═══════════════════════════════════════════════════════════════════════════════════════════════════════════════════
+
+# Intervalle entre les backups automatiques (en minutes)
+# Plus la valeur est faible, plus les backups sont fréquents (mais plus d'espace disque utilisé)
+intervalle-backup-minutes: 30
+
+# Intervalle de nettoyage automatique (en heures)
+# Fréquence à laquelle le système supprime automatiquement les anciens backups
+intervalle-nettoyage-heures: 2
+
+# ═══════════════════════════════════════════════════════════════════════════════════════════════════════════════════
+# RÉTENTION DES BACKUPS
+# ═══════════════════════════════════════════════════════════════════════════════════════════════════════════════════
+
+# Durée de conservation des backups (en heures)
+# Les backups plus anciens que cette durée seront automatiquement supprimés
+duree-conservation-heures: 24
+
+# Nombre maximum de backups à conserver par type de jeu
+# Même si les backups sont récents, seuls les X plus récents seront gardés
+nombre-max-backups-par-type: 10
+
+# ═══════════════════════════════════════════════════════════════════════════════════════════════════════════════════
+# NETTOYAGE POST-PARTIE
+# ═══════════════════════════════════════════════════════════════════════════════════════════════════════════════════
+
+# Active le nettoyage automatique après chaque partie
+# Recommandé: true (évite l'accumulation de backups temporaires)
+nettoyage-post-partie-actif: true
+
+# Durée de conservation pour le nettoyage post-partie (en heures)
+# Plus agressif que le nettoyage général pour éviter l'accumulation
+duree-conservation-post-partie-heures: 1
+
+# Nombre maximum de backups à conserver après une partie
+nombre-max-backups-post-partie: 5
+
+# ═══════════════════════════════════════════════════════════════════════════════════════════════════════════════════
+# LOGS ET NOTIFICATIONS
+# ═══════════════════════════════════════════════════════════════════════════════════════════════════════════════════
+
+# Active les logs détaillés pour le système de backup
+logs-detailles-actifs: true
+
+# Intervalle minimum entre les notifications de backup (en heures)
+# Évite de spammer les logs avec des messages de backup
+intervalle-notification-heures: 1
+
+# ═══════════════════════════════════════════════════════════════════════════════════════════════════════════════════
+# INFORMATIONS
+# ═══════════════════════════════════════════════════════════════════════════════════════════════════════════════════
+
+# Les backups sont stockés dans :
+# - plugins/KingFight/getdown/backups/
+# - plugins/KingFight/jumpleague/backups/  
+# - plugins/KingFight/hungergames/backups/
+#
+# Commandes administrateur disponibles :
+# - /kingfight nettoyer-backups : Force le nettoyage immédiat
+# - /kingfight statut : Affiche les informations sur les backups
+#
+# ATTENTION : 
+# - Des valeurs trop faibles peuvent impacter les performances
+# - Des valeurs trop élevées peuvent consommer beaucoup d'espace disque
+# - Le nettoyage post-partie est essentiel pour éviter l'accumulation

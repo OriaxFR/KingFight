@@ -1,0 +1,373 @@
+########################################
+#        CONFIGURATION GETDOWN        #
+#  Descente rapide + Shop + Phase PvP #
+########################################
+
+# ═══════════════════════════════════════════════════════════════════════════════════════════════════════════════════
+# PARAMÈTRES DE PARTIE
+# ═══════════════════════════════════════════════════════════════════════════════════════════════════════════════════
+partie:
+  # Nombre minimum de joueurs requis pour démarrer une partie
+  taille-file-attente: 16
+  
+  # Lancement automatique même si la file n'est pas complète
+  lancement-automatique-actif: true
+  
+  # Nombre minimum de joueurs requis pour le lancement automatique
+  # (doit être inférieur à taille-file-attente)
+  minimum-joueurs-lancement-auto: 12
+  
+  # Délai d'attente avant lancement automatique (en secondes)
+  # Si la file n'est pas complète après ce délai, lance avec le minimum de joueurs
+  delai-lancement-auto-secondes: 60
+  
+  # Durée allouée pour chaque map de descente (en secondes)
+  duree-par-map-secondes: 150
+  
+  # Nombre total de maps de descente à parcourir
+  nombre-maps: 3
+  
+  # Durée de la phase de shopping (en secondes)
+  duree-phase-stuff-secondes: 90
+  
+  # Durée de la phase PvP finale (en minutes)
+  duree-phase-pvp-minutes: 6
+  
+  # Nombre de vies par joueur pendant la phase PvP
+  vies-pvp: 3
+  
+  # Délai avant que la bordure commence à se réduire en phase PvP (en minutes)
+  temps-avant-bordure-minutes: 1
+  
+  # Vitesse de réduction de la bordure (en blocs par seconde)
+  vitesse-bordure-blocs-par-seconde: 2
+  
+  # Dégâts infligés par seconde aux joueurs hors de la bordure
+  degats-bordure-par-seconde: 4
+  
+  # Durée de l'effet de régénération après avoir éliminé un joueur (en secondes)
+  duree-regeneration-kill-secondes: 10
+
+# ═══════════════════════════════════════════════════════════════════════════════════════════════════════════════════
+# CONFIGURATION DES BLOCS
+# ═══════════════════════════════════════════════════════════════════════════════════════════════════════════════════
+blocs:
+  # Bloc utilisé pour remplacer les blocs spéciaux consommés par les joueurs
+  # Par défaut: REDSTONE_BLOCK (bloc de redstone rouge)
+  # Autres exemples: BARRIER, BEDROCK, STONE, COBBLESTONE, etc.
+  bloc-remplacement: "REDSTONE_BLOCK"
+
+# ═══════════════════════════════════════════════════════════════════════════════════════════════════════════════════
+# BLOCS SPÉCIAUX DANS LES MAPS DE DESCENTE
+# ═══════════════════════════════════════════════════════════════════════════════════════════════════════════════════
+# Ces blocs donnent des bonus spéciaux quand les joueurs les touchent pendant la descente
+
+blocs-speciaux:
+
+  # ─────────────────────────────────────────────────────────────────────────────────────────────────────────────
+  # MAP 1
+  # ─────────────────────────────────────────────────────────────────────────────────────────────────────────────
+
+  lanterne:
+    # Type de bloc Minecraft utilisé pour représenter ce bloc spécial
+    material: "SEA_LANTERN"
+
+    # Liste des effets possibles (format: "EFFET:NIVEAU:DURÉE_EN_SECONDES")
+    # Le joueur recevra un effet aléatoire de cette liste
+    effets-possibles:
+      - "SPEED:2:30"        # Vitesse niveau 2 pendant 30 secondes (positif)
+      - "JUMP_BOOST:2:30"   # Saut amélioré niveau 2 pendant 30 secondes (positif)
+      - "REGENERATION:1:20" # Régénération niveau 1 pendant 20 secondes (positif)
+      - "SLOWNESS:1:15"     # Lenteur niveau 1 pendant 15 secondes (négatif)
+      - "WEAKNESS:1:20"     # Faiblesse niveau 1 pendant 20 secondes (négatif)
+
+    message: "§3Lanterne de Mer §f! §6§lEffet aléatoire §f!"
+
+  eponge:
+    # Type de bloc Minecraft utilisé pour représenter ce bloc spécial
+    material: "SPONGE"
+
+    # Nombre minimum de KingCoins donnés par ce bloc
+    kingcoins-min: 8
+    # Nombre maximum de KingCoins donnés par ce bloc
+    # Le montant final sera aléatoire entre min et max
+    kingcoins-max: 12
+
+    # Message affiché au joueur quand il touche ce bloc
+    # {kingcoins} sera remplacé par le montant exact reçu
+    message: "§9Bloc d'éponge ! §f+§6§l{kingcoins} §eKingCoins !"
+  
+  # ─────────────────────────────────────────────────────────────────────────────────────────────────────────────
+  # MAP 2
+  # ─────────────────────────────────────────────────────────────────────────────────────────────────────────────
+
+  tnt:
+    material: "TNT"
+
+    kingcoins-min: 8
+    kingcoins-max: 12
+
+    message: "§9Bloc de TNT ! §f+§6§l{kingcoins} §eKingCoins !"
+
+  obsidienne:
+    material: "OBSIDIAN"
+    effets-possibles:
+      - "SPEED:2:30"
+      - "JUMP_BOOST:2:30"
+      - "REGENERATION:1:20"
+      - "SLOWNESS:1:15"
+      - "WEAKNESS:1:20"
+
+    message: "§3Bloc d'obsidienne §f! §6§lEffet aléatoire §f!"
+  
+  # ─────────────────────────────────────────────────────────────────────────────────────────────────────────────
+  # MAP 3
+  # ─────────────────────────────────────────────────────────────────────────────────────────────────────────────
+
+  or:
+    material: "GOLD_BLOCK"
+
+    kingcoins-min: 8
+    kingcoins-max: 12
+
+    message: "§9Bloc d'OR ! §f+§6§l{kingcoins} §eKingCoins !"
+
+  emeraude:
+    material: "EMERALD_BLOCK"
+    effets-possibles:
+      - "SPEED:2:30"
+      - "JUMP_BOOST:2:30"
+      - "REGENERATION:1:20"
+      - "SLOWNESS:1:15"
+      - "WEAKNESS:1:20"
+
+    message: "§3Bloc d'émeraude §f! §6§lEffet aléatoire §f!"
+
+
+# ═══════════════════════════════════════════════════════════════════════════════════════════════════════════════════
+# CONFIGURATION DU SHOP D'ÉQUIPEMENT
+# ═══════════════════════════════════════════════════════════════════════════════════════════════════════════════════
+# Les joueurs dépensent leurs KingCoins collectés pour acheter de l'équipement avant le PvP
+shop:
+  # Prix de chaque objet en KingCoins
+  prix:
+    # ─────────────────────────────────────────────────────────────────────────────────────────────────────────────
+    # ARMES - Avec noms personnalisés et enchantements
+    # ─────────────────────────────────────────────────────────────────────────────────────────────────────────────
+    DIAMOND_SWORD: 80
+    
+    GOLD_SWORD:
+      prix: 50
+      nom: "&eÉpée en Titane"
+      enchantements:
+        DAMAGE_ALL: 5
+        DURABILITY: 3
+    
+    IRON_SWORD:
+      prix: 40
+      nom: "&1Épée en Saphir"
+      enchantements:
+        DAMAGE_ALL: 5
+        DURABILITY: 3
+    
+    STONE_SWORD: 20
+    
+    WOOD_SWORD:
+      prix: 15
+      nom: "&4Épée en Onyx"
+      enchantements:
+        DAMAGE_ALL: 5
+        DURABILITY: 3
+    
+    BOW: 30
+    ARROW: 2
+    
+    # ─────────────────────────────────────────────────────────────────────────────────────────────────────────────
+    # ARMURES DIAMANT
+    # ─────────────────────────────────────────────────────────────────────────────────────────────────────────────
+    DIAMOND_HELMET: 60
+    DIAMOND_CHESTPLATE: 80
+    DIAMOND_LEGGINGS: 70
+    DIAMOND_BOOTS: 50
+    
+    # ─────────────────────────────────────────────────────────────────────────────────────────────────────────────
+    # ARMURES OR (TITANE) - Avec noms personnalisés et enchantements
+    # ─────────────────────────────────────────────────────────────────────────────────────────────────────────────
+    GOLD_HELMET:
+      prix: 35
+      nom: "&eCasque en Titane"
+      enchantements:
+        PROTECTION_ENVIRONMENTAL: 4
+        DURABILITY: 3
+    
+    GOLD_CHESTPLATE:
+      prix: 45
+      nom: "&ePlastron en Titane"
+      enchantements:
+        PROTECTION_ENVIRONMENTAL: 4
+        DURABILITY: 3
+    
+    GOLD_LEGGINGS:
+      prix: 40
+      nom: "&eJambières en Titane"
+      enchantements:
+        PROTECTION_ENVIRONMENTAL: 4
+        DURABILITY: 3
+    
+    GOLD_BOOTS:
+      prix: 30
+      nom: "&eBottes en Titane"
+      enchantements:
+        PROTECTION_ENVIRONMENTAL: 4
+        DURABILITY: 3
+    
+    # ─────────────────────────────────────────────────────────────────────────────────────────────────────────────
+    # ARMURES FER (SAPHIR) - Avec noms personnalisés et enchantements
+    # ─────────────────────────────────────────────────────────────────────────────────────────────────────────────
+    IRON_HELMET:
+      prix: 30
+      nom: "&1Casque en Saphir"
+      enchantements:
+        PROTECTION_ENVIRONMENTAL: 4
+        DURABILITY: 3
+    
+    IRON_CHESTPLATE:
+      prix: 40
+      nom: "&1Plastron en Saphir"
+      enchantements:
+        PROTECTION_ENVIRONMENTAL: 4
+        DURABILITY: 3
+    
+    IRON_LEGGINGS:
+      prix: 35
+      nom: "&1Jambières en Saphir"
+      enchantements:
+        PROTECTION_ENVIRONMENTAL: 4
+        DURABILITY: 3
+    
+    IRON_BOOTS:
+      prix: 25
+      nom: "&1Bottes en Saphir"
+      enchantements:
+        PROTECTION_ENVIRONMENTAL: 4
+        DURABILITY: 3
+    
+    # ─────────────────────────────────────────────────────────────────────────────────────────────────────────────
+    # ARMURES MAILLE (ONYX) - Avec noms personnalisés et enchantements
+    # ─────────────────────────────────────────────────────────────────────────────────────────────────────────────
+    CHAINMAIL_HELMET:
+      prix: 25
+      nom: "&4Casque en Onyx"
+      enchantements:
+        PROTECTION_ENVIRONMENTAL: 4
+        DURABILITY: 3
+    
+    CHAINMAIL_CHESTPLATE:
+      prix: 35
+      nom: "&4Plastron en Onyx"
+      enchantements:
+        PROTECTION_ENVIRONMENTAL: 4
+        DURABILITY: 3
+    
+    CHAINMAIL_LEGGINGS:
+      prix: 30
+      nom: "&4Jambières en Onyx"
+      enchantements:
+        PROTECTION_ENVIRONMENTAL: 4
+        DURABILITY: 3
+    
+    CHAINMAIL_BOOTS:
+      prix: 20
+      nom: "&4Bottes en Onyx"
+      enchantements:
+        PROTECTION_ENVIRONMENTAL: 4
+        DURABILITY: 3
+    
+    # ─────────────────────────────────────────────────────────────────────────────────────────────────────────────
+    # NOURRITURE
+    # ─────────────────────────────────────────────────────────────────────────────────────────────────────────────
+    GOLDEN_APPLE: 25
+    COOKED_BEEF: 5
+    BREAD: 3
+    
+    # ─────────────────────────────────────────────────────────────────────────────────────────────────────────────
+    # OBJETS SPÉCIAUX
+    # ─────────────────────────────────────────────────────────────────────────────────────────────────────────────
+    ENDER_PEARL: 40
+    
+    # ─────────────────────────────────────────────────────────────────────────────────────────────────────────────
+    # POTIONS DE COMBAT
+    # ─────────────────────────────────────────────────────────────────────────────────────────────────────────────
+    # Note: Les potions utilisent des valeurs de durabilité pour définir leurs effets en Minecraft 1.8.8
+    POTION:
+      configurations:
+        soin:
+          prix: 20
+          nom: "&dPotion de Soin"
+          lore:
+            - "&7Potion jetable"
+            - "&7Restaure instantanément la vie"
+            - "&d❤ Soigne ~2 coeurs"
+          durability: 16453
+          categorie: "jetables"
+        
+        force:
+          prix: 35
+          nom: "&cPotion de Force"
+          lore:
+            - "&7Potion jetable"
+            - "&7Augmente les dégâts"
+            - "&c⚔ Force I (3:00)"
+          durability: 16393
+          categorie: "jetables"
+        
+        vitesse:
+          prix: 30
+          nom: "&bPotion de Vitesse"
+          lore:
+            - "&7Potion jetable"
+            - "&7Augmente la vitesse"
+            - "&b⚡ Vitesse I (3:00)"
+          durability: 16386
+          categorie: "jetables"
+        
+        regeneration:
+          prix: 40
+          nom: "&ePotion de Régénération"
+          lore:
+            - "&7Potion jetable"
+            - "&7Régénère la vie"
+            - "&e❤ Régénération I (0:45)"
+          durability: 16385
+          categorie: "jetables"
+
+# ═══════════════════════════════════════════════════════════════════════════════════════════════════════════════════
+# SYSTÈME DE POINTS ET CLASSEMENTS
+# ═══════════════════════════════════════════════════════════════════════════════════════════════════════════════════
+points:
+  # Points attribués pour avoir terminé avec succès une map de descente
+  parcours-reussi: 5
+  
+  # Points bonus pour chaque tranche de 100 KingCoins collectés
+  kingcoins-100: 1
+  
+  # Points par élimination d'un adversaire en phase PvP
+  kill: 1
+  
+  # Points selon le classement final (performance globale)
+  top-12: 1    # 12ème place ou mieux
+  top-8: 1     # 8ème place ou mieux
+  top-5: 2     # 5ème place ou mieux
+  top-3: 3     # Podium (top 3)
+  top-2: 3     # Finaliste (2ème place)
+  top-1: 5     # Champion (1ère place)
+
+# ═══════════════════════════════════════════════════════════════════════════════════════════════════════════════════
+# EFFETS SPÉCIAUX
+# ═══════════════════════════════════════════════════════════════════════════════════════════════════════════════════
+effets:
+  # Niveau de l'effet de régénération donné après une élimination
+  regeneration-niveau: 2
+  
+  # Durée de l'effet de régénération après une élimination (en secondes)
+  regeneration-duree-secondes: 10
